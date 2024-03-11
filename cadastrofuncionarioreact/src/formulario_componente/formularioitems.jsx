@@ -18,8 +18,8 @@ export default function FormularioItems(props) {
     function manipularEnvio(evento) {
         evento.preventDefault();
         evento.stopPropagation();
-        const form = evento.currentTarget;
-        if (form.checkValidity() === false) {
+        const formularioitem = evento.currentTarget;
+        if (formularioitem.checkValidity() === false) {
             setValidado(false);
             setEnviadoComSucesso(false);
         }
@@ -30,14 +30,18 @@ export default function FormularioItems(props) {
     }
 
     const [item, setItem] = useState({
-        Nome_prod: '',
-        Data_fab: '',
-        Data_ven: '',
-        Tipo_prod: '',
-        Preco_prod: '',
-        Qtde_prod: '',
+        Nome_prod: "",
+        Data_fab: "",
+        Data_ven: "",
+        Tipo_prod: "",
+        Preco_prod: "",
+        Qtde_prod: "",
     });
 
+    function manipularMudança(evento) {
+        const componenteitem = evento.currentTarget;
+        setItem({ ...item, [componenteitem.name]: componenteitem.value})
+    }
 
     return (
         <div style={estiloFormulario}>
@@ -47,22 +51,22 @@ export default function FormularioItems(props) {
             <Row className="mb-3">
                 <Form.Group as={Col} md="3" controlId="campo1">
                     <Form.Label>Nome do produto</Form.Label>
-                    <Form.Control type="text" placeholder="Nome do produto" required value={item.Nome_prod}/>
+                    <Form.Control type="text" placeholder="Nome do produto" required value={item.Nome_prod} id="Nome_prod" name="Nome_prod" onChange={manipularMudança}/>
                     <Form.Control.Feedback type='invalid'>Insira o nome do produto!</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="3" controlId="campo2">
                     <Form.Label>Data de Fabricação do Produto</Form.Label>
-                    <Form.Control type="date" placeholder="Data de Fabricação" required value={item.Data_fab}/>
+                    <Form.Control type="date" placeholder="Data de Fabricação" required value={item.Data_fab} onChange={manipularMudança} id="Data_fab" name="Data_fab"/>
                     <Form.Control.Feedback type='invalid'>Insira sua data de fabricação correta!</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="3" controlId="campo2">
                     <Form.Label>Data de Vencimento do Produto</Form.Label>
-                    <Form.Control type="date" placeholder="Data de Vencimento" required value={item.Data_ven}/>
+                    <Form.Control type="date" placeholder="Data de Vencimento" required value={item.Data_ven} onChange={manipularMudança} id="Data_ven" name="Data_ven"/>
                     <Form.Control.Feedback type='invalid'>Insira sua data de vencimento correta!</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="3" controlId="campo3">
                     <Form.Label>Tipo de Produto</Form.Label>
-                    <Form.Control as="select" required value={item.Tipo_prod}>
+                    <Form.Control as="select" required value={item.Tipo_prod} onChange={manipularMudança} id="Tipo_prod" name="Tipo_prod">
                         <option value="">Selecione...</option>
                         <option>Beleza</option>
                         <option>Tecnológico</option>
@@ -74,12 +78,12 @@ export default function FormularioItems(props) {
                 </Form.Group>
                 <Form.Group as={Col} md="3" controlId="campo11">
                     <Form.Label>Preço por item</Form.Label>
-                    <Form.Control type="text" placeholder="Preço" required value={item.Preco_prod}/>
+                    <Form.Control type="text" placeholder="Preço" required value={item.Preco_prod} onChange={manipularMudança} id="Preco_prod" name="Preco_prod"/>
                     <Form.Control.Feedback type='invalid'>Insira o preço corretamente!</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="3" controlId="campo13">
                     <Form.Label>Quantidade de produtos</Form.Label>
-                    <Form.Control as="select" required value={item.Qtde_prod}>
+                    <Form.Control as="select" required value={item.Qtde_prod} onChange={manipularMudança} id="Qtde_prod" name="Qtde_prod">
                         <option value="">Selecione...</option>
                         <option>Entre 10 items</option>
                         <option>Entre 50 items</option>
