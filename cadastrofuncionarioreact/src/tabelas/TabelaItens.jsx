@@ -1,10 +1,9 @@
-import Pagina from "../templates/pagina";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 export default function TabelaItens(props){
     return(
         <div>
             <Button onClick={() => {
-                props.setExibirTabela(false);
+                props.setExibirTabelaItens(false);
             }}>
                 Cadastrar Novo Item</Button>
 
@@ -23,7 +22,7 @@ export default function TabelaItens(props){
                     </thead>
                     <tbody>
                         {
-                            props.itens.map((item, index) => {
+                            props.listaItens?.map((item, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{index + 1}</td>

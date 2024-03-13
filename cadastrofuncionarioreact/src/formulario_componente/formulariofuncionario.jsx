@@ -22,10 +22,13 @@ export default function FormularioFuncionarios(props) {
         if (formulariofuncionario.checkValidity() === false) {
             setValidado(false);
             setEnviadoComSucesso(false);
+
         }
         else{
             setValidado(true);
             setEnviadoComSucesso(true);
+            props.setListaFuncionarios([...props.listaFuncionarios, funcionario]);
+            props.setExibirTabelaFuncionarios(true);
         }
     }
 
@@ -136,7 +139,7 @@ export default function FormularioFuncionarios(props) {
             <br/>
             <Button type="submit">Enviar</Button>
             <Button onClick={()=>{
-                props.setExibirTabela(true);
+                props.setExibirTabelaFuncionarios(true);
             }}>Voltar</Button>
         </Form>
         {enviadoComSucesso && (<div style={{ marginTop: '10px', color: 'green' }}>

@@ -3,15 +3,17 @@ import TabelaItens from "../tabelas/TabelaItens"
 import Pagina from "../templates/pagina";
 import { useState } from "react";
 
-export default function CadastroCliente(props){
-    const [exibirTabela, setExibirTabela] = useState(true);
+export default function CadastroItens(props){
+    const [exibirTabela, setExibirTabelaItens] = useState(true);
     const [listaItens, setListaItens] = useState([]);
  
     if (exibirTabela){
         return (
             <Pagina>
-                <h1>Lista de Itens</h1>
-                <TabelaItens listaItens={[listaItens]} setExibirTabela={setExibirTabela}/>
+                <h2>Itens Cadastrados</h2>
+                <br/>
+                <h2>Lista de Itens</h2>
+                <TabelaItens listaItens={listaItens} setExibirTabelaItens={setExibirTabelaItens}/>
             </Pagina>
         )
     }
@@ -21,9 +23,12 @@ export default function CadastroCliente(props){
             <div>
                 <Pagina>
                     <h2>Itens Cadastrados</h2>
-                    <FormularioItens setExibirTabela={setExibirTabela}
-                    listaItens = {listaItens}
-                    setListaItens={setListaItens}
+                    <br/>
+                    <h2>Lista de Itens</h2>
+                    <FormularioItens 
+                        setExibirTabelaItens={setExibirTabelaItens}
+                        listaItens = {listaItens}
+                        setListaItens={setListaItens}
                     />
                 </Pagina>
             </div>

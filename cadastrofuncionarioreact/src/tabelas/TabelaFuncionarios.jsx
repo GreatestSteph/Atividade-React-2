@@ -1,10 +1,9 @@
-import Pagina from "../templates/pagina";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 export default function TabelaFuncionarios(props){
     return(
         <div>
             <Button onClick={() => {
-                props.setExibirTabela(false);
+                props.setExibirTabelaFuncionarios(false);
             }}>
                 Cadastrar Novo Funcionário</Button>
 
@@ -29,7 +28,7 @@ export default function TabelaFuncionarios(props){
                     </thead>
                     <tbody>
                     {
-                            props.itens.map((funcionario, index) => {
+                            props.listaFuncionarios?.map((funcionario, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{index + 1}</td>

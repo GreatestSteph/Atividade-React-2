@@ -22,6 +22,9 @@ export default function FormularioItens(props) {
         if (formularioitem.checkValidity() === false) {
             setValidado(false);
             setEnviadoComSucesso(false);
+            
+            props.setListaItens([...props.listaItens, item]);
+            props.setExibirTabelaItens(true);
         }
         else{
             setValidado(true);
@@ -97,7 +100,7 @@ export default function FormularioItens(props) {
             <br/>
             <Button type="submit">Enviar</Button>
             <Button onClick={()=>{
-                props.setExibirTabela(true);
+                props.setExibirTabelaItens(true);
             }}>Voltar</Button>
         </Form>
         {enviadoComSucesso && (<div style={{ marginTop: '10px', color: 'green' }}>
