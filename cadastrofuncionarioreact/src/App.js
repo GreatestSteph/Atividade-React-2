@@ -1,7 +1,7 @@
 import Cabecalho from "./cabecalho_componente/cabecalho";
 import FormularioFuncionarios from "./formulario_componente/formulariofuncionario";
 import MenuWalleMart from "./menu_componente/menu_wallemart";
-import FormularioItems from "./formulario_componente/formularioitems"
+import FormularioItens from "./formulario_componente/formularioitens"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -31,12 +31,12 @@ function App() {
           }/>
 
 
-          <Route path="cadastroitems" element={  
+          <Route path="cadastroitens" element={  
             <div>
               <br/>
               <Cabecalho/>
               <br/>
-              <FormularioItems/>
+              <FormularioItens/>
             </div>
           }/>
 

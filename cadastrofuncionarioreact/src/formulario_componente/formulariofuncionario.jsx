@@ -135,6 +135,9 @@ export default function FormularioFuncionarios(props) {
             </Row>
             <br/>
             <Button type="submit">Enviar</Button>
+            <Button onClick={()=>{
+                props.setExibirTabela(true);
+            }}>Voltar</Button>
         </Form>
         {enviadoComSucesso && (<div style={{ marginTop: '10px', color: 'green' }}>
           Enviado com sucesso!

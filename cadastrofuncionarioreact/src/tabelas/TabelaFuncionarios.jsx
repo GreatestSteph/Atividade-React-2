@@ -3,6 +3,11 @@ import { Table } from "react-bootstrap";
 export default function TabelaFuncionarios(props){
     return(
         <div>
+            <Button onClick={() => {
+                props.setExibirTabela(false);
+            }}>
+                Cadastrar Novo Funcionário</Button>
+
             <h1>Lista de Funcionarios</h1>
                 <Table striped bordered hover>
                     <thead>
@@ -24,7 +29,7 @@ export default function TabelaFuncionarios(props){
                     </thead>
                     <tbody>
                     {
-                            props.items.map((funcionario, index) => {
+                            props.itens.map((funcionario, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{index + 1}</td>

@@ -3,6 +3,11 @@ import { Table } from "react-bootstrap";
 export default function TabelaItens(props){
     return(
         <div>
+            <Button onClick={() => {
+                props.setExibirTabela(false);
+            }}>
+                Cadastrar Novo Item</Button>
+
             <h1>Lista de Itens</h1>
                 <Table>
                     <thead>
@@ -18,7 +23,7 @@ export default function TabelaItens(props){
                     </thead>
                     <tbody>
                         {
-                            props.items.map((item, index) => {
+                            props.itens.map((item, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{index + 1}</td>

@@ -5,12 +5,13 @@ import { useState } from "react";
 
 export default function CadastroCliente(props){
     const [exibirTabela, setExibirTabela] = useState(true);
+    const [listaFuncionarios, setListaFuncionarios] = useState([]);
     
     if (exibirTabela){
         return (
             <Pagina>
                 <h1>Lista de funcionários</h1>
-                <TabelaFuncionarios funcionarios={[]}/>
+                <TabelaFuncionarios listaFuncionarios={[listaFuncionarios]} setExibirTabela={setExibirTabela}/>
             </Pagina>
         )
     }
@@ -20,7 +21,10 @@ export default function CadastroCliente(props){
             <div>
                 <Pagina>
                     <h2>Funcionários Cadastrados</h2>
-                    <FormularioFuncionarios/>
+                    <FormularioFuncionarios setExibirTabela={setExibirTabela}
+                    listaFuncionarios = {listaFuncionarios}
+                    setListaFuncionarios = {setListaFuncionarios}
+                    />
                 </Pagina>
             </div>
         )

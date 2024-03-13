@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useState } from 'react';
 
-export default function FormularioItems(props) {
+export default function FormularioItens(props) {
     const estiloFormulario = {
         marginTop: '2.5%',
         width: '100%',            
@@ -85,17 +85,20 @@ export default function FormularioItems(props) {
                     <Form.Label>Quantidade de produtos</Form.Label>
                     <Form.Control as="select" required value={item.Qtde_prod} onChange={manipularMudança} id="Qtde_prod" name="Qtde_prod">
                         <option value="">Selecione...</option>
-                        <option>Entre 10 items</option>
-                        <option>Entre 50 items</option>
-                        <option>Entre 100 items</option>
-                        <option>Entre 500 items</option>
-                        <option>Entre 1000 items</option>
+                        <option>Entre 10 itens</option>
+                        <option>Entre 50 itens</option>
+                        <option>Entre 100 itens</option>
+                        <option>Entre 500 itens</option>
+                        <option>Entre 1000 itens</option>
                     </Form.Control>
-                    <Form.Control.Feedback type='invalid'>Selecione a quantidade de items!</Form.Control.Feedback>
+                    <Form.Control.Feedback type='invalid'>Selecione a quantidade de itens!</Form.Control.Feedback>
                 </Form.Group>
             </Row>
             <br/>
             <Button type="submit">Enviar</Button>
+            <Button onClick={()=>{
+                props.setExibirTabela(true);
+            }}>Voltar</Button>
         </Form>
         {enviadoComSucesso && (<div style={{ marginTop: '10px', color: 'green' }}>
           Enviado com sucesso!

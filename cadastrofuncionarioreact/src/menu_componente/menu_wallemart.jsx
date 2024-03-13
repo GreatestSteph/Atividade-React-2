@@ -32,8 +32,8 @@ export default function MenuWalleMart(props) {
         <Link to="/cadastrofuncionario" style={estiloMenu.botao}>
           Cadastrar Funcionário
         </Link>
-        <Link to="/cadastroitems" style={estiloMenu.botao}>
-          Cadastrar Items
+        <Link to="/cadastroitens" style={estiloMenu.botao}>
+          Cadastrar Itens
         </Link>
       </div>
     </div>
