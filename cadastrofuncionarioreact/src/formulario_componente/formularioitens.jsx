@@ -6,31 +6,40 @@ import { useState } from 'react';
 
 export default function FormularioItens(props) {
     const estiloFormulario = {
-        marginTop: '2.5%',
         width: '100%',            
         padding: '10px',          
         color: 'black',
     };
 
-    const [valido, setValidado] = useState(false);
-    const [enviadoComSucesso, setEnviadoComSucesso] = useState(false);
+    const estiloMenu = {
+        botoesContainer: {
+            display: 'flex',
+            flexDirection: 'column',
+        },
+        botao: {
+            width: '100px',
+            margin: '10px',
+            padding: '10px',
+            fontSize: '16px',
+            backgroundColor: '#3cb371',
+            color: 'white',
+            borderRadius: '10%',
+            cursor: 'pointer',
+            textDecoration: 'none',
+        },
+        botaovoltar: {
+            width: '100px',
+            margin: '10px',
+            padding: '10px',
+            fontSize: '16px',
+            backgroundColor: '#000000',
+            color: 'white',
+            borderRadius: '10%',
+            cursor: 'pointer',
+            textDecoration: 'none',
+        },
+      };
 
-    function manipularEnvio(evento) {
-        evento.preventDefault();
-        evento.stopPropagation();
-        const formularioitem = evento.currentTarget;
-        if (formularioitem.checkValidity() === false) {
-            setValidado(false);
-            setEnviadoComSucesso(false);
-            
-            props.setListaItens([...props.listaItens, item]);
-            props.setExibirTabelaItens(true);
-        }
-        else{
-            setValidado(true);
-            setEnviadoComSucesso(true);
-        }
-    }
 
     const [item, setItem] = useState({
         Nome_prod: "",
@@ -41,9 +50,24 @@ export default function FormularioItens(props) {
         Qtde_prod: "",
     });
 
+    const [valido, setValidado] = useState(false);
+
+    function manipularEnvio(evento) {
+        evento.preventDefault();
+        evento.stopPropagation();
+        const form = evento.currentTarget;
+        if (form.checkValidity() === false) {
+            setValidado(true);
+        } else {
+            setValidado(false);
+            props.setListaItens([...props.listaItens, item]);
+            props.setExibirTabelaItens(true);   
+        }
+    }
+
     function manipularMudança(evento) {
-        const componenteitem = evento.currentTarget;
-        setItem({ ...item, [componenteitem.name]: componenteitem.value})
+        const componente = evento.currentTarget;
+        setItem({ ...item, [componente.name]: componente.value });
     }
 
     return (
@@ -98,15 +122,12 @@ export default function FormularioItens(props) {
                 </Form.Group>
             </Row>
             <br/>
-            <Button type="submit">Enviar</Button>
-            <Button onClick={()=>{
+            <Button type="submit" style={estiloMenu.botao}>Enviar</Button>
+            <Button style={estiloMenu.botaovoltar} onClick={() => {
                 props.setExibirTabelaItens(true);
             }}>Voltar</Button>
         </Form>
-        {enviadoComSucesso && (<div style={{ marginTop: '10px', color: 'green' }}>
-          Enviado com sucesso!
-        </div>)}
-        </div>
+        </div> 
     );
 
 }

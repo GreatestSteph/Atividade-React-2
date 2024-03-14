@@ -6,31 +6,39 @@ import { useState } from 'react';
 
 export default function FormularioFuncionarios(props) {
     const estiloFormulario = {
-        marginTop: '2.5%',
         width: '100%',            
         padding: '10px',          
         color: 'black',
     };
 
-    const [valido, setValidado] = useState(false);
-    const [enviadoComSucesso, setEnviadoComSucesso] = useState(false);
-
-    function manipularEnvio(evento) {
-        evento.preventDefault();
-        evento.stopPropagation();
-        const formulariofuncionario = evento.currentTarget;
-        if (formulariofuncionario.checkValidity() === false) {
-            setValidado(false);
-            setEnviadoComSucesso(false);
-
-        }
-        else{
-            setValidado(true);
-            setEnviadoComSucesso(true);
-            props.setListaFuncionarios([...props.listaFuncionarios, funcionario]);
-            props.setExibirTabelaFuncionarios(true);
-        }
-    }
+    const estiloMenu = {
+        botoesContainer: {
+            display: 'flex',
+            flexDirection: 'column',
+        },
+        botao: {
+            width: '100px',
+            margin: '10px',
+            padding: '10px',
+            fontSize: '16px',
+            backgroundColor: '#3cb371',
+            color: 'white',
+            borderRadius: '10%',
+            cursor: 'pointer',
+            textDecoration: 'none',
+        },
+        botaovoltar: {
+            width: '100px',
+            margin: '10px',
+            padding: '10px',
+            fontSize: '16px',
+            backgroundColor: '#000000',
+            color: 'white',
+            borderRadius: '10%',
+            cursor: 'pointer',
+            textDecoration: 'none',
+        },
+    };
 
     const [funcionario, setFuncionario] = useState({
         Nome_func: "",
@@ -47,10 +55,26 @@ export default function FormularioFuncionarios(props) {
         Escolaridade_func: "",
     });
 
-    function manipularMudança(evento) {
-        const componentefuncionario = evento.currentTarget;
-        setFuncionario({ ...funcionario, [componentefuncionario.name]: componentefuncionario.value})
+    const [valido, setValidado] = useState(false);
+
+    function manipularEnvio(evento) {
+        evento.preventDefault();
+        evento.stopPropagation();
+        const form = evento.currentTarget;
+        if (form.checkValidity() === false) {
+            setValidado(true);
+        } else {
+            setValidado(false);
+            props.setListaFuncionarios([...props.listaFuncionarios, funcionario]);
+            props.setExibirTabelaFuncionarios(true);   
+        }
     }
+
+    function manipularMudança(evento) {
+        const componente = evento.currentTarget;
+        setFuncionario({ ...funcionario, [componente.name]: componente.value });
+    }
+
 
     return (
         <div style={estiloFormulario}>
@@ -137,15 +161,11 @@ export default function FormularioFuncionarios(props) {
                 </Form.Group>
             </Row>
             <br/>
-            <Button type="submit">Enviar</Button>
-            <Button onClick={()=>{
+            <Button type="submit" style={estiloMenu.botao}>Enviar</Button>
+            <Button style={estiloMenu.botaovoltar} onClick={() => {
                 props.setExibirTabelaFuncionarios(true);
             }}>Voltar</Button>
         </Form>
-        {enviadoComSucesso && (<div style={{ marginTop: '10px', color: 'green' }}>
-          Enviado com sucesso!
-        </div>)}
-        </div>
+        </div>       
     );
-
 }

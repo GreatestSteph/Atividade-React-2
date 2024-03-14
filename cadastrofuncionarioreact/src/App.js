@@ -1,7 +1,9 @@
-import Cabecalho from "./cabecalho_componente/cabecalho";
-import FormularioFuncionarios from "./formulario_componente/formulariofuncionario";
-import MenuWalleMart from "./menu_componente/menu_wallemart";
-import FormularioItens from "./formulario_componente/formularioitens"
+import Cabecalho from "./cabecalho_componente/cabecalho.jsx";
+import MenuWalleMart from "./menu_componente/menu_wallemart.jsx";
+
+import ExibirCadastroFuncionarios from "./tabelas/funcionariosCadastrados.jsx"
+import ExibirCadastroItens from "./tabelas/itensCadastrados.jsx"
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -16,7 +18,9 @@ function App() {
               <br/>
               <Cabecalho/>
               <br/>
-              <FormularioFuncionarios/>
+              <br/>
+              <br/>
+              <ExibirCadastroFuncionarios/> 
             </div>
           }/>
 
@@ -36,9 +40,14 @@ function App() {
               <br/>
               <Cabecalho/>
               <br/>
-              <FormularioItens/>
+              <br/>
+              <br/>
+              <ExibirCadastroItens/> 
             </div>
           }/>
+
+
+
 
 
         </Routes>

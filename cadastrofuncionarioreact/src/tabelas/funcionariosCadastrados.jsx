@@ -1,36 +1,34 @@
 import FormularioFuncionarios from "../formulario_componente/formulariofuncionario";
-import TabelaFuncionarios from "../tabelas/TabelaFuncionarios"
-import Pagina from "../templates/pagina";
+import TabelaFuncionarios from "../tabelas/telaTabelaFuncionarios";
 import { useState } from "react";
 
-export default function CadastroFuncionarios(props){
-    const [exibirTabela, setExibirTabelaFuncionarios] = useState(true);
-    const [listaFuncionarios, setListaFuncionarios] = useState([]);
+export default function ExibirCadastroFuncionarios(props) {
     
-    if (exibirTabela){
+    const [exibirTabelaFuncionarios, setExibirTabelaFuncionarios] = useState(true);
+    const [listaFuncionarios, setListaFuncionarios] = useState([]);
+
+    if (exibirTabelaFuncionarios) {
         return (
-            <Pagina>
-                <h2>Funcionários Cadastrados</h2>
+            <div>
+                <h1>Funcionários Cadastrados</h1>
                 <br/>
-                <h2>Lista de Funcionários</h2>
-                <TabelaFuncionarios listaFuncionarios={listaFuncionarios} setExibirTabelaFuncionarios={setExibirTabelaFuncionarios}/>
-            </Pagina>
+                <TabelaFuncionarios 
+                    listaFuncionarios={listaFuncionarios} 
+                    setExibirTabelaFuncionarios={setExibirTabelaFuncionarios}
+                />
+            </div>
         )
     }
-
-    else{
-        return(
+    else {
+        return (
             <div>
-                <Pagina>
-                    <h2>Funcionários Cadastrados</h2>
-                    <br/>
-                    <h2>Lista de Funcionários</h2>
-                    <FormularioFuncionarios 
+                <h1>Funcionários Cadastrados</h1>
+                <br/>
+                <FormularioFuncionarios 
                     setExibirTabelaFuncionarios={setExibirTabelaFuncionarios}
-                    listaFuncionarios = {listaFuncionarios}
-                    setListaFuncionarios = {setListaFuncionarios}
-                    />
-                </Pagina>
+                    listaFuncionarios={listaFuncionarios}
+                    setListaFuncionarios={setListaFuncionarios}
+                />
             </div>
         )
     }

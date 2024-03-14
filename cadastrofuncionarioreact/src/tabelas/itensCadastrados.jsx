@@ -1,36 +1,34 @@
-import FormularioItens from "../formulario_componente/formularioitens"
-import TabelaItens from "../tabelas/TabelaItens"
-import Pagina from "../templates/pagina";
+import FormularioItens from "../formulario_componente/formularioitens";
+import TabelaItens from "../tabelas/telaTabelaItens";
 import { useState } from "react";
 
-export default function CadastroItens(props){
-    const [exibirTabela, setExibirTabelaItens] = useState(true);
+export default function ExibirCadastroItens(props) {
+    
+    const [exibirTabelaItens, setExibirTabelaItens] = useState(true);
     const [listaItens, setListaItens] = useState([]);
- 
-    if (exibirTabela){
+
+    if (exibirTabelaItens) {
         return (
-            <Pagina>
-                <h2>Itens Cadastrados</h2>
+            <div>
+                <h1>Itens Cadastrados</h1>
                 <br/>
-                <h2>Lista de Itens</h2>
-                <TabelaItens listaItens={listaItens} setExibirTabelaItens={setExibirTabelaItens}/>
-            </Pagina>
+                <TabelaItens 
+                    listaItens={listaItens} 
+                    setExibirTabelaItens={setExibirTabelaItens}
+                />
+            </div>
         )
     }
-
-    else{
-        return(
+    else {
+        return (
             <div>
-                <Pagina>
-                    <h2>Itens Cadastrados</h2>
-                    <br/>
-                    <h2>Lista de Itens</h2>
-                    <FormularioItens 
-                        setExibirTabelaItens={setExibirTabelaItens}
-                        listaItens = {listaItens}
-                        setListaItens={setListaItens}
-                    />
-                </Pagina>
+                <h1>Itens Cadastrados</h1>
+                <br/>
+                <FormularioItens 
+                    setExibirTabelaItens={setExibirTabelaItens}
+                    listaItens={listaItens}
+                    setListaItens={setListaItens}
+                />
             </div>
         )
     }
